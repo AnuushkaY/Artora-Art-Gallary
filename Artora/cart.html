@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Cart - Artora</title>
+  
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="styles1.css" />
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <style>
+       body {
+  background-image: url("background_img_3.png");
+  background-size: cover;
+}
+    #cart-items {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+  
+    .item {
+      width: 45%;
+      background: #fff;
+      padding: 15px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      text-align: center;
+    }
+  
+    .item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+  
+    .item h3 {
+      margin: 10px 0 5px;
+    }
+  
+    .item p {
+      margin: 5px 0;
+    }
+  
+    .item button {
+      background-color: #ff9900;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  
+    .item button:hover {
+      background-color: #cc7a00;
+    }
+
+    img {
+  width: 100%;        
+  height: auto;      
+  object-fit: contain; 
+}
+  </style>
+  
+</head>
+<body>
+  <input type="checkbox" id="toggle">
+  <label for="toggle" class="menu-icon">&#9776;</label>
+
+  <div class="sidebar">
+    <h2>Menu</h2>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="gallary_2.html">Gallery</a></li>
+      <li><a href="Categories">Categories</a>
+        <ul class="submenu">
+          <li><a href="https://en.wikipedia.org/wiki/Sculpture">Sculpture</a></li>
+          <li><a href="https://en.wikipedia.org/wiki/Oil_painting">Oil Painting</a></li>
+          <li><a href="https://en.wikipedia.org/wiki/Calligraphy">Calligraphy</a></li>
+          <li><a href="https://en.wikipedia.org/wiki/Stencil">Stencil art</a></li>
+          <li><a href="https://en.wikipedia.org/wiki/3D_computer_graphics">2D & 3D Digital Art</a></li>
+        </ul>
+      </li>
+      <li><a href="cart.html">Cart</a></li>
+      <li><a href="Account">Account</a>
+        <ul class="submenu">
+          <li><a href="login.html">Login</a></li>
+          <li><a href="signup.html">Signup</a></li>
+        </ul>
+      </li>
+      <li><a href="contacts.html">Contacts</a></li>
+    </ul>
+  </div>
+
+  <main class="intro">
+    <h2>Your Cart</h2>
+    <div id="cart-items" class="products"></div>
+    <h3 id="cart-total">Total: ₹0</h3>
+    <button id="checkoutBtn" class="btn">Place Order</button>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 Artora Gallery. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    const cartContainer = document.getElementById("cart-items");
+    const totalDisplay = document.getElementById("cart-total");
+    const checkoutBtn = document.getElementById("checkoutBtn");
+
+    let cart = JSON.parse(sessionStorage.getItem("cartData")) || [];
+
+    function displayCart() {
+      cartContainer.innerHTML = "";
+      let total = 0;
+
+      if (cart.length === 0) {
+        cartContainer.innerHTML = "<p>Your cart is empty.</p>";
+        checkoutBtn.disabled = true;
+        totalDisplay.textContent = "Total: ₹0";
+        return;
+      }
+
+      cart.forEach((item, index) => {
+        total += item.price * item.quantity;
+        const div = document.createElement("div");
+        div.className = "item";
+        div.innerHTML = `
+          <img src="${item.img}" alt="${item.title}" style="width:100%; height:200px; border-radius:10px;"/>
+          <h3>${item.title}</h3>
+          <p>Price: ₹${item.price} × ${item.quantity}</p>
+          <button onclick="removeItem(${index})">Remove</button>
+        `;
+        cartContainer.appendChild(div);
+      });
+
+      totalDisplay.textContent = `Total: ₹${total}`;
+      checkoutBtn.disabled = false;
+    }
+
+    function removeItem(index) {
+      cart.splice(index, 1);
+      sessionStorage.setItem("cartData", JSON.stringify(cart));
+      displayCart();
+      updateCartCount();
+    }
+
+    checkoutBtn.onclick = () => {
+      alert("✅ Order placed successfully!");
+      sessionStorage.removeItem("cartData");
+      cart = [];
+      displayCart();
+      updateCartCount();
+    };
+
+    function updateCartCount() {
+      const cartData = JSON.parse(sessionStorage.getItem("cartData")) || [];
+      const totalItems = cartData.reduce((sum, item) => sum + item.quantity, 0);
+      const cartCount = document.getElementById("cart-count");
+      if (cartCount) {
+        cartCount.textContent = totalItems;
+      }
+    }
+
+    displayCart();
+    updateCartCount();
+  </script>
+</body>
+</html>

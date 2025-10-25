@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | Artora</title>
+  <link rel="stylesheet" href="styles1.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f7f9fb;
+      color: #000000;
+    }
+    header {
+      background: #ab956a;
+      color: rgb(65, 38, 38);
+      padding: 10px;
+      text-align: center;
+    }
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    h1{
+        color: #fff;
+        font-size: 60px;
+    }
+
+    h2 {
+      margin-top: 0;
+      color: rgb(65, 38, 38);
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    label {
+      margin: 10px 0 5px;
+    }
+    input, textarea {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    button {
+      margin-top: 20px;
+      background: #ab956a;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #ab956a;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #ab956a;
+      color: white;
+      margin-top: 60px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🌻 Artora 🌻</h1>
+    <h4>Your Artistic Journey Starts Here</h4>
+  </header>
+  <input type="checkbox" id="toggle">
+  <label for="toggle" class="menu-icon">&#9776;</label>
+
+  <div class="sidebar">
+    <h2 style="color: #fff;" >Menu</h2>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="gallary_2.html">Gallery</a></li>
+      <li><a href="Categories">Categories</a>
+        <ul class="submenu">
+          <li><a href="https://en.wikipedia.org/wiki/Sculpture">Sculpture</a></li>
+          <li><a href="https://en.wikipedia.org/wiki/Oil_painting">Oil Painting</a></li>
+          <li><a href="https://en.wikipedia.org/wiki/Calligraphy">Calligraphy</a></li>
+          <li><a href="https://en.wikipedia.org/wiki/Stencil">Stencil art</a></li>
+          <li><a href="https://en.wikipedia.org/wiki/3D_computer_graphics">2D & 3D Digital Art</a></li>
+        </ul>
+      </li>
+      <li><a href="cart.html">Cart</a></li>
+      <li><a href="Account">Account</a>
+        <ul class="submenu">
+          <li><a href="login.html">Login</a></li>
+          <li><a href="signup.html">Signup</a></li>
+        </ul>
+      </li>
+      <li><a href="contacts.html">Contacts</a></li>
+    </ul>
+  </div>
+
+  
+  <div class="container">
+    <h2>Contact Us</h2>
+    <p>We’d love to hear from you. Whether you have a question about artworks, orders, or anything else, our team is ready to help.</p>
+    <form action="#" method="post">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" placeholder="Your full name" required />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="you@example.com" required />
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+
+  <footer>
+    &copy; 2025 Artora. All rights reserved.
+  </footer>
+</body>
+</html>

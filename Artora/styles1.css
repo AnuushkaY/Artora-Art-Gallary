@@ -1,0 +1,152 @@
+.sidebar {
+  width: 200px;
+  background: #1e2c3b;
+  color: #ffffff;
+  height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+  transition: transform 0.3s ease;
+  position: fixed;
+  z-index: 999;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  border: 1px solid #ffffff;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.sidebar ul li a {
+  color: #ffffff;
+  text-decoration: none;
+  display: block;
+  padding: 15px 10px;
+}
+
+.sidebar ul li ul.submenu {
+  display: none;
+  list-style: none;
+  padding-left: 15px;
+}
+
+.sidebar ul li:hover ul.submenu {
+  display: block;
+}
+
+.sidebar ul li ul.submenu li {
+  border: 1px dashed #ccc;
+  padding: 8px 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  background-color: #2a3a4b;
+}
+
+.menu-icon {
+  position: absolute;
+  top: 20px;
+  left: 0px;
+  font-size: 30px;
+  color: white;
+  background: #333;
+  padding: 10px;
+  border: 2px solid #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  z-index: 1000;
+  display: none;
+}
+
+#toggle {
+  display: none;
+}
+
+.content {
+  padding: 20px;
+  flex: 1;
+  margin-left: 200px;
+  text-align: center;
+  color: #000000;
+}
+
+
+@media (max-width: 2000px) {
+  .menu-icon {
+    display: block;
+  }
+
+  .sidebar {
+    transform: translateX(-100%);
+  }
+
+  #toggle:checked ~ .sidebar {
+    transform: translateX(0);
+  }
+
+  h2 {
+    font-size: 40px;
+    text-align: center;
+  }
+}
+
+
+.main-content {
+  position: relative;
+  top: 350px;
+  left: 450px;
+}
+
+
+.container {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0px 5px 15px rgba(166, 130, 188, 0.2);
+  width: 380px;
+  border: 1px solid rgba(166, 130, 188, 0.3);
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 1.8rem;
+  color: #3c2d16;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  text-shadow: 0 0 6px rgba(118, 84, 138, 0.2);
+  text-align: center;
+  margin-top: 100px;
+}
+
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #c5a583, #3b3012);
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: white;
+  transition: 0.3s ease-in-out;
+  box-shadow: 0px 4px 10px rgba(188, 174, 130, 0.3);
+}
+
+button:hover {
+  background: linear-gradient(135deg, #3b3012, #c5a583);
+  box-shadow: 0px 4px 15px rgba(224, 205, 176, 0.5);
+}
+
+p {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #3e3e3e;
+  text-align: center;
+}
+
+
